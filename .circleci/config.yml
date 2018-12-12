@@ -82,7 +82,7 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               docker tag sudo.anypay.global anypay/sudo.anypay.global:latest
               ./push_to_docker.sh
-              ssh chef@sudo.anypay.global "sudo chef-client -o 'recipe[pos.anypay.global::default]'"
+              ssh chef@sudo.anypay.global "sudo chef-client -o 'recipe[sudo.anypay.global::default]'"
             fi
             if [ "${CIRCLE_BRANCH}" == "staging" ]; then
               docker tag sudo.anypay.global anypay/sudo.anypay.global:staging
