@@ -1,12 +1,12 @@
 {{!-- app/templates/application.hbs --}}
 
-<div class='container'>
+<div class="container">
   <div class="menu">
 
     {{#if session.isAuthenticated}}
-      <a {{action 'invalidateSession'}}>Logout</a>
+      {{#link-to action "invalidateSession"}}>Logout{{/link-to}}
     {{else}}
-      {{#link-to 'login'}}Login{{/link-to}}
+      {{#link-to "login"}}Login{{/link-to}}
     {{/if}}
   </div>
   <div class="main">

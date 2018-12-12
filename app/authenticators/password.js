@@ -1,29 +1,25 @@
 import Base from "ember-simple-auth/authenticators/base";
-import Ember from "ember";
 import config from 'ember-get-config';
+import $ from 'jquery';
 
 export default Base.extend({
-  restore(data) {
-    return Ember.RSVP.Promise.resolve(data);
+  async restore(data) {
+    return data;
   },
-  authenticate(password, _empty) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
-      Ember.$
-        .ajax({
-          url: `${config.apiEndpoint}/access_tokens`,
-          method: "POST",
-          headers: {
-            Authorization: `Basic ${btoa(`${password}:`)}`
-          }
-        })
-        .then(accessToken => resolve({ accessToken: accessToken.uid }))
-        .catch(error => {
-          console.log("error", error);
-          reject("invalid credentials");
-        });
+  async authenticate(password) {
+
+    let accessToken = await $.ajax({
+      url: `${config.apiEndpoint}/access_tokens`,
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${btoa(`${password}:`)}`
+      }
     });
+
+    return { accessToken: accessToken.uid };
+
   },
-  invalidate() {
-    return Ember.RSVP.Promise.resolve();
+  async invalidate() {
+    return;
   }
 });
