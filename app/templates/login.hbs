@@ -1,12 +1,14 @@
-<div class="row">
+<div class="row login-form">
 
   {{outlet}}
   {{!-- app/templates/login.hbs --}}
+  <div class='col-md-4'></div>
+  <div class='col-md-4'>
+  <h2>Login</h2>
 
   <form {{action "authenticate" on="submit"}}>
 
     <div class="form-group">
-      <label for="identification">Login</label>
       {{input placeholder="Sudo Key" value=identification}}
     </div>
 
@@ -17,5 +19,7 @@
       {{/if}}
     </div>
   </form>
+  </div>
+  <div class='col-md-4'></div>
 
 </div>
