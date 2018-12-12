@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'sudo-anypay-global',
+    apiEndpoint: 'https://api.anypay.global',
     environment,
     rootURL: '/',
     locationType: 'auto',
@@ -29,6 +30,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+    ENV.apiEndpoint = 'https://api.anypay.global';
   }
 
   if (environment === 'test') {

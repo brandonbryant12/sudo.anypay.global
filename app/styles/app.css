@@ -1,0 +1,9 @@
+
+li {
+  list-style-type: none;
+}
+
+a.logout-link {
+  float: right;
+  text-align: right;
+}

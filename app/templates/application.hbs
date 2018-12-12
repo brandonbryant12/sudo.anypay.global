@@ -1,16 +1,24 @@
-{{!-- app/templates/application.hbs --}}
 
 <div class="container">
   <div class="menu">
+    <header class="row navbar application-header" role="banner">                      
+                                                                  
+      <h1 style='text-align:center; font-size: 1.5em'>Anypay Super User Admin</h1>
+      {{#if session.isAuthenticated}}
+        {{#link-to "dashboard"}}Dashboard{{/link-to}}
+        {{#link-to "logout" class='logout-link'}}Logout{{/link-to}}
+      {{else}}
+        {{#link-to "login"}}Login{{/link-to}}
+      {{/if}}
+    </header>
+  </div>
 
-    {{#if session.isAuthenticated}}
-      {{#link-to action "invalidateSession"}}>Logout{{/link-to}}
-    {{else}}
-      {{#link-to "login"}}Login{{/link-to}}
-    {{/if}}
-  </div>
   <div class="main">
-    {{outlet}}
+
+    <div class='row'>
+      {{outlet}}
+    </div>
   </div>
+  
 </div>
 
