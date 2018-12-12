@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  webapp:
+    build:
+      context: .
+    ports:
+      - 4200:80
+    expose:
+      - "4200"
