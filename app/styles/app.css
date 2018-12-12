@@ -18,3 +18,8 @@ a.logout-link {
 .login-form .col-md-4 {
   margin-top: 4em;
 }
+
+h1.app-title {
+  text-align:center;
+  font-size: 1.5;
+}

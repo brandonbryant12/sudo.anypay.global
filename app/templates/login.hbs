@@ -2,24 +2,24 @@
 
   {{outlet}}
   {{!-- app/templates/login.hbs --}}
-  <div class='col-md-4'></div>
-  <div class='col-md-4'>
-  <h2>Login</h2>
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <h2>Login</h2>
 
-  <form {{action "authenticate" on="submit"}}>
+    <form {{action "authenticate" on="submit"}}>
 
-    <div class="form-group">
-      {{input placeholder="Sudo Key" value=identification}}
-    </div>
+      <div class="form-group">
+        {{input placeholder="Sudo Key" value=identification}}
+      </div>
 
-    <div class="form-group">
-      <button type="submit">Login</button>
-      {{#if errorMessage}}
-        <p>{{errorMessage}}</p>
-      {{/if}}
-    </div>
-  </form>
+      <div class="form-group">
+        <button type="submit">Login</button>
+        {{#if errorMessage}}
+          <p>{{errorMessage}}</p>
+        {{/if}}
+      </div>
+    </form>
   </div>
-  <div class='col-md-4'></div>
+  <div class="col-md-4"></div>
 
 </div>

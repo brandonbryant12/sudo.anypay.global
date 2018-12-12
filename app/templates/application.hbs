@@ -3,10 +3,10 @@
   <div class="menu">
     <header class="row navbar application-header" role="banner">                      
                                                                   
-      <h1 style='text-align:center; font-size: 1.5em'>Anypay Super User Admin</h1>
+      <h1 class="app-title">Anypay Super User Admin</h1>
       {{#if session.isAuthenticated}}
         {{#link-to "dashboard"}}Dashboard{{/link-to}}
-        {{#link-to "logout" class='logout-link'}}Logout{{/link-to}}
+        {{#link-to "logout" class="logout-link"}}Logout{{/link-to}}
       {{else}}
         {{#link-to "login"}}Login{{/link-to}}
       {{/if}}
@@ -15,7 +15,7 @@
 
   <div class="main">
 
-    <div class='container-fluid'>
+    <div class="container-fluid">
 
       {{outlet}}
 
