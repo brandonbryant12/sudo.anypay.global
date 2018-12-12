@@ -1,0 +1,94 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8-browsers
+        environment:
+          # CHROME_BIN: "/usr/bin/google-chrome"
+          JOBS: 1 # https://github.com/emberjs/ember.js/issues/15641
+    steps:
+      ##
+      # SETUP
+      ##
+      - checkout
+
+      - setup_remote_docker:
+          filters:
+            branches:
+              only:
+                - master
+                - staging
+      # - setup_remote_docker:
+      #     docker_layer_caching: true
+
+      # Bower is required because of https://github.com/ember-cli/ember-try/issues/141
+      - run:
+          name: Install node global dependencies
+          command: |
+            sudo npm install -g ember-cli bower yarn phantomjs-prebuilt -f
+      ##
+      # NPM
+      ##
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: Install npm dependencies
+          command: yarn install
+      - run:
+          name: Install bower dependencies
+          command: bower install
+      - save_cache:
+          key: dependency-cache-{{  checksum "package.json" }}
+          paths:
+            - ./node_modules
+      ##
+      # BUILD EMBER APP
+      ##
+      - run:
+          name: Build application
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              npm run build -- --environment=production
+            fi
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              npm run build -- --environment=staging
+            fi
+      - run:
+          name: Build App into Docker
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ] || [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              docker build -t sudo.anypay.global .
+            fi
+
+      ##
+      # TESTS
+      ##
+
+      # Run Default Ember Tests
+      - run:
+          name: Run Ember Tests
+          # command: |
+          #   docker run -it pointofsale npm test
+          #   npm test
+          command: npm test
+
+      # Deploy application
+      - add_ssh_keys
+      - run:
+           name: Add deployment hosts to known_hosts
+           command: ssh-keyscan -H sudo.anypay.global >> ~/.ssh/known_hosts
+      - run:
+           name: Add deployment hosts to known_hosts
+           command: ssh-keyscan -H sudo.staging.anypay.global >> ~/.ssh/known_hosts
+      - deploy:
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker tag sudo.anypay.global anypay/sudo.anypay.global:latest
+              ./push_to_docker.sh
+              ssh chef@sudo.anypay.global "sudo chef-client -o 'recipe[pos.anypay.global::default]'"
+            fi
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+              docker tag sudo.anypay.global anypay/sudo.anypay.global:staging
+              ./push_to_docker_staging.sh
+              ssh chef@sudo.staging.anypay.global "sudo chef-client -o 'recipe[sudo.anypay.global::staging]'"
+            fi
