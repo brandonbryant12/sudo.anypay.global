@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Install node global dependencies
           command: |
-            sudo npm install -g ember-cli bower yarn phantomjs-prebuilt -f
+            sudo npm install -g ember-cli yarn phantomjs-prebuilt -f
       ##
       # NPM
       ##
@@ -34,9 +34,6 @@ jobs:
       - run:
           name: Install npm dependencies
           command: yarn install
-      - run:
-          name: Install bower dependencies
-          command: bower install
       - save_cache:
           key: dependency-cache-{{  checksum "package.json" }}
           paths:
