@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('accounts');
   this.route('invoices');
   this.route('forwards');
+  this.route('coins');
 });
 
 export default Router;
