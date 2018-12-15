@@ -6,7 +6,7 @@
 
   <div class="row">
 
-    <table class='table'>
+    <table class="table">
       <thead>
         <td></td>
         <td></td>
@@ -14,29 +14,37 @@
 
       </thead>
 
-      {{#each coins as |coin| }}
+      <tbody>
+        {{#each coins as |coin| }}
 
+          <tr>
 
-        <tr>
+            <td>{{coin.code}}</td>
 
-          <td>{{coin.code}}</td>
+            <td>{{coin.name}}</td>
+            <td>
 
-          <td>{{coin.name}}</td>
-          <td>
+              {{#if coin.unavailable }}
+                <input
+                  type="checkbox"
+                  data-id={{coin.code}}
+                  onchange={{action "activateCoin" coin.code}}
+                >
+              {{else}}
+                <input
+                  type="checkbox"
+                  checked
+                  data-id={{coin.code}}
+                  onchange={{action "deactivateCoin" coin.code}}
+                >
+              {{/if}}
+          
+            </td>
 
-            {{#if coin.unavailable }}
-              <input type="checkbox" data-id={{coin.code}}
-              onchange={{action "activateCoin" coin.code}}>
-            {{else}}
-              <input type="checkbox" checked 
-              data-id={{coin.code}} onchange={{action "deactivateCoin" coin.code}}>
-            {{/if}}
-        
-          </td>
+          </tr>
 
-        </tr>
-
-      {{/each}}
+        {{/each}}
+      </tbody>
 
     </table>
 

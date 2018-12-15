@@ -1,8 +1,10 @@
 import Controller from '@ember/controller';
 import config from 'ember-get-config';
+import $ from 'jquery';
+import { inject } from '@ember/service';
 
 export default Controller.extend({
-  session: Ember.inject.service('session'),
+  session: inject('session'),
 
   actions: {
 
@@ -43,7 +45,7 @@ function activateCoin(coin, accessToken) {
     'Authorization': `Basic ${btoa(accessToken + ":")}`
   };
 
-  return Ember.$.ajax({
+  return $.ajax({
     method: 'POST',
     url: `${config.apiEndpoint}/sudo/coins/activate`,
     data: { code: coin }, 
@@ -58,7 +60,7 @@ function deactivateCoin(coin, accessToken) {
     'Authorization': `Basic ${btoa(accessToken + ":")}`
   };
 
-  return Ember.$.ajax({
+  return $.ajax({
     method: 'POST',
     url: `${config.apiEndpoint}/sudo/coins/deactivate`,
     data: { code: coin }, 
