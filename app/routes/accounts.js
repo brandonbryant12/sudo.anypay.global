@@ -7,7 +7,7 @@ import $ from 'jquery';
 export default Route.extend(AuthenticatedRouteMixin, {
   session: inject('session'),
 
-  model: async function(params) {
+  model: async function() {
 
     /*
       Retrieve payment_forwards list from API

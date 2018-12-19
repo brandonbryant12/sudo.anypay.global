@@ -8,7 +8,7 @@ export default Controller.extend({
 
   actions: {
 
-    searchInvoice(params) {
+    searchInvoice() {
 
       this.transitionToRoute('invoice', this.get('invoice_uid'));
 

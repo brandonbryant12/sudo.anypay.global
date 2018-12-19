@@ -2,19 +2,22 @@
 
 <h2>Invoices</h2>
 
-<div class='row'>
-  <div class='seach-input'>
+<div class="row">
+  <div class="seach-input">
 
-  <form {{action "searchInvoice" on="submit"}}>
-    {{input type='search' class='form-control ' placeholder='search invoice uid'
-    value=invoice_uid}}
-  </form>
+    <form {{action "searchInvoice" on="submit"}}>
+      {{ input
+        type="search"
+        class="form-control"
+        placeholder="search invoice uid"
+        value=invoice_uid
+      }}
+    </form>
   </div>
 
 </div>
-<br/>
 
-<div class='row'>
+<div class="row">
   <table class="table table-striped">
     <thead>
       <tr>
