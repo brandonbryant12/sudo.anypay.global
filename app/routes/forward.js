@@ -1,3 +1,4 @@
+
 import Route from '@ember/routing/route';
 import AuthenticatedRouteMixin from "ember-simple-auth/mixins/authenticated-route-mixin";
 import config from 'ember-get-config';
@@ -7,7 +8,9 @@ import $ from 'jquery';
 export default Route.extend(AuthenticatedRouteMixin, {
   session: inject('session'),
 
-  model: async function(params) {
+  model: function(params) {
+
+    console.log('PARAMS', params);
 
     /*
       Retrieve payment_forwards list from API
@@ -17,22 +20,17 @@ export default Route.extend(AuthenticatedRouteMixin, {
     let headers = {
       'Authorization': `Basic ${btoa(accessToken + ":")}`
     };
-    let accounts = await $.ajax({
+    return $.ajax({
       method: 'GET',
-      url: `${config.apiEndpoint}/sudo/accounts`,
+      url: `${config.apiEndpoint}/sudo/payment_forwards/${params.forward_id}`,
       headers: headers
     });
-
-    return accounts
   },
 
-  setupController: function(controller, model){ 
+  setupController(controller, model) {
 
-    controller.set('accounts', model);
-
-    console.log('model', model);
+    this.set('forward', model);
 
   }
-
 
 });

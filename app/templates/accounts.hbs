@@ -1,3 +1,24 @@
-<h1> Accounts </h1>
-
 {{outlet}}
+
+<h2>Accounts</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Email</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {{#each accounts as |account|}}
+      <tr>
+        <td>{{account.id}}</td> 
+        <td>{{#link-to "account" account}}{{account.email}}{{/link-to}}</td> 
+        <td>{{account.createdAt}}</td> 
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+

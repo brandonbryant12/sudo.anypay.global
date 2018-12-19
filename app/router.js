@@ -11,9 +11,12 @@ Router.map(function() {
   this.route('dashboard', { path: '/' });
   this.route('logout');
   this.route('accounts');
+  this.route('account', { path: '/accounts/:id' });
   this.route('invoices');
   this.route('forwards');
+  this.route('forward', { path: '/forwards/:forward_id' });
   this.route('coins');
+  this.route('invoice', { path: '/invoices/:id' });
 });
 
 export default Router;

@@ -1,0 +1,100 @@
+{{outlet}}
+
+<h2>Invoice</h2>
+
+<div class='row'>
+
+  <div>
+
+    <table class='table table-striped'>
+
+      <tbody>
+
+        <tr>
+
+          <td>UID</td>
+          <td>{{invoice.uid}}</td>
+
+        </tr>
+
+        <tr>
+
+          <td>Account ID</td>
+          <td>{{#link-to "account" invoice.account_id}} {{invoice.account_id}} {{/link-to}}</td>
+
+        </tr>
+
+        <tr>
+          <td>Status</td>
+          <td>{{invoice.status}}</td>
+        </tr>
+
+        <tr>
+          <td>Denomination</td>
+          <td>{{invoice.denomination_amount}} {{invoice.denomination_currency}}</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+    <h3>Input</h3>
+    <table class='table table-striped'>
+
+      <tbody>
+
+        <tr>
+          <td>Input Address</td>
+          <td>{{invoice.address}}</td>
+        </tr>
+
+        <tr>
+          <td>Input Currency</td>
+          <td>{{invoice.invoice_currency}}</td>
+        </tr>
+
+        <tr>
+          <td>Input Amount</td>
+          <td>{{invoice.invoice_amount}}</td>
+        </tr>
+
+        <tr>
+          <td>Input Hash</td>
+          <td>{{invoice.hash}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <h3>Output</h3>
+
+    <table class='table table-striped'>
+      <tbody>
+        <tr>
+          <td>Output Address</td>
+          <td>{{invoice.output_address}}</td>
+        </tr>
+
+        <tr>
+          <td>Output Currency</td>
+          <td>{{invoice.output_currency}}</td>
+        </tr>
+
+        <tr>
+          <td>Output Amount</td>
+          <td>{{invoice.output_amount}}</td>
+        </tr>
+
+        <tr>
+          <td>Output Hash</td>
+          <td>{{invoice.output_hash}}</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>
+

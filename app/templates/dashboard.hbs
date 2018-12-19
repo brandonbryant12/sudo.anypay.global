@@ -1,15 +1,29 @@
 {{outlet}}
 
+
 <div class="container">
+
+<div class='row'>
+  <div class='search-input'>
+    <h2>Search Invoice</h2>
+
+  <form {{action "searchInvoice" on="submit"}}>
+    {{input type='search' class='form-control ' placeholder='search invoice uid'
+    value=invoice_uid}}
+  </form>
+  </div>
+
+</div>
+<br/>
 
   <div class="row">
 
     <ul>
 
-      <li>{{#link-to "accounts"}}Accounts{{/link-to }}</li>
-      <li>{{#link-to "invoices"}}Invoices{{/link-to }}</li>
-      <li>{{#link-to "forwards"}}Payment Forwards{{/link-to }}</li>
-      <li>{{#link-to "coins"}}Coins Management{{/link-to }}</li>
+      <li><h3>{{#link-to "accounts"}}Accounts{{/link-to }}</h3></li>
+      <li><h3>{{#link-to "invoices"}}Invoices{{/link-to }}</h3></li>
+      <li><h3>{{#link-to "forwards"}}Payment Forwards{{/link-to }}</h3></li>
+      <li><h3>{{#link-to "coins"}}Coins Management{{/link-to }}</h3></li>
 
     </ul>
 

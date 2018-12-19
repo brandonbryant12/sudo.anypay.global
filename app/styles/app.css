@@ -23,3 +23,9 @@ h1.app-title {
   text-align:center;
   font-size: 1.5;
 }
+
+.search-input {
+  padding: 2em;
+  border:1px #ccc;
+}
+

@@ -1,3 +1,41 @@
 {{outlet}}
 
 <h2>Invoices</h2>
+
+<div class='row'>
+  <div class='seach-input'>
+
+  <form {{action "searchInvoice" on="submit"}}>
+    {{input type='search' class='form-control ' placeholder='search invoice uid'
+    value=invoice_uid}}
+  </form>
+  </div>
+
+</div>
+<br/>
+
+<div class='row'>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Input Currency</th>
+        <th>Input Address</th>
+        <th>Status</th>
+        <th>Output Address</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {{#each invoices as |invoice|}}
+        <tr>
+          <td>{{#link-to "invoice" invoice.uid}}{{invoice.id}}{{/link-to}}</td> 
+          <td>{{invoice.invoice_currency}}</td> 
+          <td>{{invoice.address}}</td> 
+          <td>{{invoice.status}}</td> 
+          <td>{{invoice.output_address}}</td> 
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>

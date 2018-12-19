@@ -2,3 +2,26 @@
 
 <h2>Payment Forwards</h2>
 
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Input Currency</th>
+      <th>Input Address</th>
+      <th>Output Currency</th>
+      <th>Output Address</th>
+    </tr>
+  </thead>
+<tbody>
+{{#each model as |forward|}}
+  <tr>
+    <td>{{forward.input_currency}}</td>
+    <td>
+      {{#link-to "forward" forward}}{{forward.input_address}}{{/link-to}}
+    </td>
+    <td>{{forward.output_currency}}</td>
+    <td>{{forward.output_address}}</td>
+  </tr>
+{{/each}}
+</tbody>
+</table>
+
