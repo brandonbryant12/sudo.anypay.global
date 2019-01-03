@@ -1,0 +1,64 @@
+{{outlet}}
+
+<div class="row">
+  <div class="lock-address">
+
+    <h2>Lock Address</h2>
+
+    <form {{action "lockAddress" on="submit"}}>
+
+      {{input placeholder="Account Email" value=address_lock_email}}
+      {{input placeholder="Address Currency" value=address_lock_currency}}
+      <input type="submit" value="Lock Address">
+
+    </form>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="unlock-address">
+
+    <h2>Unlock Address</h2>
+
+    <form {{action "unlockAddress" on="submit"}}>
+
+      {{input placeholder="Account Email" value=address_unlock_email}}
+      {{input placeholder="Address Currency" value=address_unlock_currency}}
+      <input type="submit" value="Unlock Address">
+
+    </form>
+
+  </div>
+</div>
+
+<div class="row locked-addresses">
+
+  <h2>Locked Addresses</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Locked</th>
+        <th scope="col">Unlock</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {{#each addresses as |address|}}
+
+        <tr>
+          <td>{{address.email}}</td>
+          <td>{{address.value}}</td>
+          <td>{{address.locked}}</td>
+          <td><button class="btn btn-large">Unlock</button></td>
+        </tr>
+
+      {{/each}}
+    </tbody>
+
+  </table>
+
+</div>

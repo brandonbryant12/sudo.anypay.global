@@ -17,6 +17,7 @@ Router.map(function() {
   this.route('forward', { path: '/forwards/:forward_id' });
   this.route('coins');
   this.route('invoice', { path: '/invoices/:id' });
+  this.route('addresses');
 });
 
 export default Router;
