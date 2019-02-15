@@ -1,0 +1,18 @@
+{{outlet}}
+
+<div class='row edit-account'>
+
+<form {{action "save" on="submit"}}>
+
+  <p>Email: {{account.email}}</p>
+
+  <p>Buiness Address: {{input value=accountUpdate.physical_address}}</p>
+
+  <p>Business Name: {{input value=accountUpdate.business_name}}</p>
+
+  <p>Latitude, Longitude: {{input value=accountUpdate.latitude}}, {{input value=accountUpdate.longitude}}</p>
+
+  <input type='submit'/>
+
+</form>
+</div>

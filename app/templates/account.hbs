@@ -1,10 +1,12 @@
 {{outlet}}
 
-<p>Email: {{account.email}}</p>
+<p>ID: {{account.id}}</p>
 
 <p>Buiness Address: {{account.physical_address}}</p>
 
 <p>Business Name: {{account.business_name}}</p>
 
 <p>Latitude, Longitude: {{account.latitude}}, {{account.longitude}}</p>
+
+<p class="edit-account-link">{{#link-to "accounts.edit" account}}Edit Account{{/link-to}}</p>
 
