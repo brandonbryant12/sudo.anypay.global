@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { inject } from '@ember/service';
 import config from 'ember-get-config';
+import $ from 'jquery';
 
 async function updateAccount(account, updateParams, token) {
 
@@ -24,9 +25,9 @@ async function updateAccount(account, updateParams, token) {
 export default Controller.extend({
   session: inject('session'),
 
-  account: {},
+  account: null,
 
-  accountUpdate: {},
+  accountUpdate: null,
 
   actions: {
 

@@ -1,6 +1,7 @@
 import Route from '@ember/routing/route';
 import { inject } from '@ember/service';
 import config from 'ember-get-config';
+import $ from 'jquery';
 
 export default Route.extend({
   session: inject('session'),
