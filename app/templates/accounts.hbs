@@ -2,23 +2,40 @@
 
 <h2>Accounts</h2>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Email</th>
-      <th>Created</th>
-    </tr>
-  </thead>
-  <tbody>
+<div class='row search-account'>
 
-    {{#each accounts as |account|}}
+  <form {{action "searchAccountEmail" on="submit"}}>
+
+    <label>Search Account Email</label>
+
+    {{input value=accountSearchEmail}}
+
+    <input type='submit'/>
+
+  </form> 
+
+</div>
+
+<div class='row'>
+
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td>{{account.id}}</td> 
-        <td>{{#link-to "account" account}}{{account.email}}{{/link-to}}</td> 
-        <td>{{account.createdAt}}</td> 
+        <th>ID</th>
+        <th>Email</th>
+        <th>Created</th>
       </tr>
-    {{/each}}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
 
+      {{#each accounts as |account|}}
+        <tr>
+          <td>{{account.id}}</td> 
+          <td>{{#link-to "account" account}}{{account.email}}{{/link-to}}</td> 
+          <td>{{account.createdAt}}</td> 
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</div>
