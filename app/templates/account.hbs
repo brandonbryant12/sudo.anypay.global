@@ -1,6 +1,14 @@
 {{outlet}}
 
+<p>Email: {{account.email}}</p>
+
 <p>ID: {{account.id}}</p>
+
+<p>UID: {{account.uid}}</p>
+
+<p>Date Created: {{moment-format account.createdAt "MMMM Do YYYY h:mm a" }}</p>
+
+<p>Denomination: {{account.denomination}}</p>
 
 <p>Buiness Address: {{account.physical_address}}</p>
 
