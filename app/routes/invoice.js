@@ -19,7 +19,7 @@ export default Route.extend(AuthenticatedRouteMixin, {
     };
     return $.ajax({
       method: 'GET',
-      url: `${config.apiEndpoint}/sudo/invoices/${params.id}`,
+      url: `${config.apiEndpoint}/invoices/${params.id}`,
       headers: headers
     });
   },
