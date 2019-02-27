@@ -16,5 +16,12 @@
 
 <p>Latitude, Longitude: {{account.latitude}}, {{account.longitude}}</p>
 
+<p>Dash Back Enabled:</p>
+{{x-toggle
+  theme="flip"
+  value=dashback
+  onToggle=(action (mut this.dashback))
+}}
+
 <p class="edit-account-link">{{#link-to "accounts.edit" account}}Edit Account{{/link-to}}</p>
 
